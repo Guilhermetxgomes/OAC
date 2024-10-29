@@ -43,6 +43,7 @@ mfloat floatsisf(mint i) {
 
     return resultado;
 }
+
 // Converte um ponto flutuante para inteiro
 mint fixsfsi(mfloat a) {
   uint32_t sinal = (a & SIGN_MASK) >> 31;
@@ -79,10 +80,69 @@ mfloat negsf2(mfloat a) {
 
 // Retorna a soma entre a e b
 mfloat addsf3(mfloat a, mfloat b) {
-   return 0;
+    uint32_t sinal_a = (a & SIGN_MASK) >> 31;
+    uint32_t sinal_b = (b & SIGN_MASK) >> 31;
+    int32_t expoente_real_a = ((a & EXP_MASK) >> 23) - EXP_BIAS;
+    int32_t expoente_real_b = ((b & EXP_MASK) >> 23) - EXP_BIAS;
+    uint32_t mantissa_a = (a & FRAC_MASK) | (expoente_real_a ? (1 << 23) : 0);
+    uint32_t mantissa_b = (b & FRAC_MASK) | (expoente_real_b ? (1 << 23) : 0);
+
+    if (expoente_real_a > expoente_real_b) {
+        int32_t diff = expoente_real_a - expoente_real_b;
+        if (diff > 31) { // Precisa checar pra nao deslocar demais e perder a mantissa
+            mantissa_b = 0;
+        } else {
+            mantissa_b >>= diff;
+        }
+        expoente_real_b = expoente_real_a;
+    } else if (expoente_real_b > expoente_real_a) {
+        int32_t diff = expoente_real_b - expoente_real_a;
+        if (diff > 31) {
+            mantissa_a = 0;
+        } else {
+            mantissa_a >>= diff;
+        }
+        expoente_real_a = expoente_real_b;
+    }
+
+    int32_t resultado_expoente = expoente_real_a;
+    uint32_t resultado_mantissa;
+    uint32_t sinal_resultado = sinal_a;
+
+    if (sinal_a == sinal_b) {
+        resultado_mantissa = mantissa_a + mantissa_b;
+
+        if (resultado_mantissa & (1 << 24)) {
+            resultado_mantissa >>= 1;
+            resultado_expoente += 1;
+        }
+    } else {
+        if (mantissa_a >= mantissa_b) {
+            resultado_mantissa = mantissa_a - mantissa_b;
+            sinal_resultado = sinal_a;
+        } else {
+            resultado_mantissa = mantissa_b - mantissa_a;
+            sinal_resultado = sinal_b;
+        }
+    }
+
+    if (resultado_mantissa == 0) {
+        return 0;
+    }
+
+    uint32_t expoente_final = resultado_expoente + EXP_BIAS;
+
+    // SE O NUMERO NAO FOR DENORMALIZADO...
+    if (expoente_final > 0) {
+        resultado_mantissa &= FRAC_MASK;
+    }
+
+    mfloat resultado = (sinal_resultado << 31) | (expoente_final << 23) | (resultado_mantissa);
+
+    return resultado;
 }
 
 // Retorna a subtração entre a e b
 mfloat subsf3(mfloat a, mfloat b) {
-  return 0;
+  return addsf3(a, negsf2(b));
 }
