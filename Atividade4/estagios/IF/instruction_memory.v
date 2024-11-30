@@ -1,44 +1,37 @@
-module instruction_memory(
-    input   [31:0]  addr,       // Endereço
-    input   [31:0]  Din,        // Dados de entrada
-    input           we,         // Habilitação de escrita
-    input           re,         // Habilitação de leitura
-    input           clk,        // Clock
-    output  [31:0]  out         // Dados de saída
+module instruction_memory (
+    input [31:0] addr,        // Endereço de entrada (PC)
+    output reg [31:0] instr   // Instrução correspondente ao endereço
 );
 
-    parameter size = 256;          // Tamanho da memória
-    integer i;                     // Iterador para inicialização
+    // ROM com algumas instruções em formato binário
+    always @(*) begin
+        case (addr[9:2]) // Usamos 8 bits de endereçamento para 256 instruções
+            // Carrega o valor de uma posição de memória no registrador
+            8'h00: instr = 32'b000000000001_00001_010_00010_0000011; // lw x2, 1(x1)
 
-    reg [31:0] memory [0:size-1];  // Declaração da memória como array de 256 posições de 32 bits
+            // Armazena o valor de um registrador em uma posição de memória
+            8'h01: instr = 32'b000000000010_00010_010_00001_0100011; // sw x2, 2(x1)
 
-    // Inicialização da memória
-    initial begin
-        for(i = 0; i < size; i = i + 1) begin
-            memory[i] = 32'b0;
-        end
+            // Soma dois registradores
+            8'h02: instr = 32'b0000000_00010_00011_000_00100_0110011; // add x4, x3, x2
 
-        // Exemplo de instruções predefinidas na memória
-        memory[0] = 32'b000000000011_00000_010_00001_0000011; // lw x1, 3(x0)
-        memory[1] = 32'b000000000011_00000_010_00010_0000011; // lw x2, 3(x0)
-        memory[2] = 32'b000000000111_00000_010_00011_0000011; // lw x3, 7(x0)
-        memory[3] = 32'b000000000100_00000_010_00100_0000011; // lw x4, 4(x0)
-        memory[4] = 32'b000000000011_00000_010_00101_0000011; // lw x5, 3(x0)
-        memory[5] = 32'b0000000_00101_00001_000_01010_0110011; // add x10, x1, x5
-        memory[6] = 32'b0_000000_00001_00001_000_1000_0_1100011; // beq x1, x1, imm=16
-        memory[7] = 32'b0100000_00001_00010_000_00110_0110011; // sub x6, x2, x1
-        memory[8] = 32'b0000000_00100_00011_010_00111_0100011; // sw x4, 7(x3)
-        memory[22] = 32'b0000000_00010_00010_000_01011_0110011; // add x11, x2, x2
+            // Subtrai dois registradores
+            8'h03: instr = 32'b0100000_00010_00011_000_00101_0110011; // sub x5, x3, x2
+
+            // AND lógico entre dois registradores
+            8'h04: instr = 32'b0000000_00010_00011_111_00110_0110011; // and x6, x3, x2
+
+            // OR lógico entre dois registradores
+            8'h05: instr = 32'b0000000_00010_00011_110_00111_0110011; // or x7, x3, x2
+
+            // Salta se os valores de dois registradores forem iguais
+            8'h06: instr = 32'b0000000_00101_00100_000_00001_1100011; // beq x5, x4, +1
+
+            // Finaliza com uma instrução NOP (No Operation)
+            8'h07: instr = 32'b0000000_00000_00000_000_00000_0010011; // nop
+
+            default: instr = 32'b0; // Instrução padrão (NOP)
+        endcase
     end
-
-    // Operação de escrita na borda positiva do clock
-    always @(posedge clk) begin
-        if (we) begin
-            memory[addr[7:0]] <= Din;  // Escrita habilitada (somente nos 8 bits menos significativos do endereço)
-        end
-    end
-
-    // Leitura da memória
-    assign out = re ? memory[addr[7:0]] : 32'bz; // Leitura habilitada ou alta impedância
 
 endmodule

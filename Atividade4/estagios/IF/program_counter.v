@@ -1,4 +1,4 @@
-module pc(
+module program_counter(
     input clock,
     input reset,
     input load,
