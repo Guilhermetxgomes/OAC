@@ -26,6 +26,8 @@ module EX (
     input       ex_mem_reg_write,
     input [4:0] mem_wb_reg_rd,
     input       mem_wb_reg_write,
+    input [31:0] alu_ex_mem,
+    input [31:0] alu_data_mem_wb,
     // Saídas sinais de controle WB
     output      mem_to_reg_out,
     output      reg_write_out,
@@ -36,16 +38,19 @@ module EX (
     // Saídas do banco de registradores EX/MEM
     output [31:0] alu_result_out,
     output [31:0] mux2_result_out,
-    output [4:0] reg_rd_out
+    output [4:0] reg_rd_out,
+    output flag_beq_out
 );
 
 
 wire [3:0 ] op_alu;
 wire [31:0] mux1_out;
 wire [31:0] mux2_out;
+wire [31:0] mux3_out;
+wire [31:0] alu_result;
 wire        flag_beq;
-wire        forwardA;
-wire        forwardB;
+wire [1:0]  forwardA;
+wire [1:0]  forwardB;
 
 mux_3_values #(
    .WIDTH(32)
@@ -70,7 +75,7 @@ mux_3_values #(
 mux_2_values #(
     .WIDTH(32)
   ) mux3 (
-    .sel(aluSrc),
+    .sel(aluSrc_in),
     .D0(mux2_out),
     .D1(immediate_in),
     .D_out(mux3_out)
@@ -85,7 +90,7 @@ alu alu_ex(
 );  
 
 alu_control alu_control_ex(
-    .aluOp(aluOp_in)
+    .aluOp(aluOp_in),
     .funct7(funct7_in),
     .funct3(funct3_in),
     .op(op_alu)
@@ -102,7 +107,7 @@ forwarding_unit forward(
     .forwardB(forwardB)
 );
 
-ex_mem_register (
+ex_mem_register ex_mem_reg (
     .clock(clock),
     .reset(reset),
     // Sinais de controle WB

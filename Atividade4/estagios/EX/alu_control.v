@@ -11,7 +11,7 @@ module alu_control(
     // op = 0000 : and
     // op = 0001 : or
 
-    always @() begin
+    always @(*) begin
         case (aluOp)
             2'b00: begin
                 op <= 4'b0010; //add (ld e sd)
@@ -35,13 +35,19 @@ module alu_control(
                             3'b111: begin
                                 op <= 4'b0000; // and
                             end
-                            default: 
+                            default: begin
+                                op <= 4'b0010;
+                            end
                         endcase
                     end 
-                    default: 
+                    default: begin
+                        op <= 4'b0010;
+                    end
                 endcase
             end
-            default: 
+            default: begin
+                op <= 4'b0010;
+            end
         endcase
     end
 

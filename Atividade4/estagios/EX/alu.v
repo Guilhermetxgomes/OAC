@@ -1,5 +1,6 @@
 module alu (
-	input   [31:0] a, b,
+	input   [31:0] a, 
+    input   [31:0] b,
 	input   [3:0 ] op, 
 	output  [31:0] res, 
 	output         flag
@@ -16,6 +17,6 @@ module alu (
 				 (op == 4'b0000) ? a & b :          // and
                  (op == 4'b0001) ? a | b : 32'd0;   // or
 
-    assign flag = (a == b) ? 1 : 0; // beq
+    assign flag = (res == 32'd0) ? 1 : 0; // beq
 
 endmodule

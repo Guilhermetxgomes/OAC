@@ -65,7 +65,7 @@ assign beq_instruction_out = beq_instruction_value;
 assign alu_result_out = alu_result_value;
 assign mux2_result_out = mux2_result_value;
 assign reg_rd_out = reg_rd_value;
-assign flag_beq_out = flag_beq_value
+assign flag_beq_out = flag_beq_value;
 
 
 endmodule
