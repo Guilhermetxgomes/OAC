@@ -1,0 +1,648 @@
+$date
+	Sun Dec  1 09:43:42 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module reg_file_tb $end
+$var wire 32 ! dado_fonte2 [31:0] $end
+$var wire 32 " dado_fonte1 [31:0] $end
+$var reg 1 # clk $end
+$var reg 32 $ dado_escrita [31:0] $end
+$var reg 5 % endereco_destino [4:0] $end
+$var reg 5 & endereco_fonte1 [4:0] $end
+$var reg 5 ' endereco_fonte2 [4:0] $end
+$var reg 1 ( habilita_escrita $end
+$var reg 1 ) reset $end
+$scope module uut $end
+$var wire 1 # clk $end
+$var wire 32 * dado_escrita [31:0] $end
+$var wire 32 + dado_fonte1 [31:0] $end
+$var wire 32 , dado_fonte2 [31:0] $end
+$var wire 5 - endereco_destino [4:0] $end
+$var wire 5 . endereco_fonte1 [4:0] $end
+$var wire 5 / endereco_fonte2 [4:0] $end
+$var wire 1 ( habilita_escrita $end
+$var wire 1 ) reset $end
+$var wire 32 0 habilitacao_escrita [31:0] $end
+$scope begin registradores[1] $end
+$var parameter 2 1 idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 2 dado_entrada [31:0] $end
+$var wire 1 3 habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 4 dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[2] $end
+$var parameter 3 5 idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 6 dado_entrada [31:0] $end
+$var wire 1 7 habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 8 dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[3] $end
+$var parameter 3 9 idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 : dado_entrada [31:0] $end
+$var wire 1 ; habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 < dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[4] $end
+$var parameter 4 = idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 > dado_entrada [31:0] $end
+$var wire 1 ? habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 @ dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[5] $end
+$var parameter 4 A idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 B dado_entrada [31:0] $end
+$var wire 1 C habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 D dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[6] $end
+$var parameter 4 E idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 F dado_entrada [31:0] $end
+$var wire 1 G habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 H dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[7] $end
+$var parameter 4 I idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 J dado_entrada [31:0] $end
+$var wire 1 K habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 L dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[8] $end
+$var parameter 5 M idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 N dado_entrada [31:0] $end
+$var wire 1 O habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 P dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[9] $end
+$var parameter 5 Q idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 R dado_entrada [31:0] $end
+$var wire 1 S habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 T dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[10] $end
+$var parameter 5 U idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 V dado_entrada [31:0] $end
+$var wire 1 W habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 X dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[11] $end
+$var parameter 5 Y idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 Z dado_entrada [31:0] $end
+$var wire 1 [ habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 \ dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[12] $end
+$var parameter 5 ] idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 ^ dado_entrada [31:0] $end
+$var wire 1 _ habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 ` dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[13] $end
+$var parameter 5 a idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 b dado_entrada [31:0] $end
+$var wire 1 c habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 d dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[14] $end
+$var parameter 5 e idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 f dado_entrada [31:0] $end
+$var wire 1 g habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 h dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[15] $end
+$var parameter 5 i idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 j dado_entrada [31:0] $end
+$var wire 1 k habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 l dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[16] $end
+$var parameter 6 m idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 n dado_entrada [31:0] $end
+$var wire 1 o habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 p dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[17] $end
+$var parameter 6 q idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 r dado_entrada [31:0] $end
+$var wire 1 s habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 t dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[18] $end
+$var parameter 6 u idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 v dado_entrada [31:0] $end
+$var wire 1 w habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 x dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[19] $end
+$var parameter 6 y idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 z dado_entrada [31:0] $end
+$var wire 1 { habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 | dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[20] $end
+$var parameter 6 } idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 ~ dado_entrada [31:0] $end
+$var wire 1 !" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 "" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[21] $end
+$var parameter 6 #" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 $" dado_entrada [31:0] $end
+$var wire 1 %" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 &" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[22] $end
+$var parameter 6 '" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 (" dado_entrada [31:0] $end
+$var wire 1 )" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 *" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[23] $end
+$var parameter 6 +" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 ," dado_entrada [31:0] $end
+$var wire 1 -" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 ." dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[24] $end
+$var parameter 6 /" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 0" dado_entrada [31:0] $end
+$var wire 1 1" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 2" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[25] $end
+$var parameter 6 3" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 4" dado_entrada [31:0] $end
+$var wire 1 5" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 6" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[26] $end
+$var parameter 6 7" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 8" dado_entrada [31:0] $end
+$var wire 1 9" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 :" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[27] $end
+$var parameter 6 ;" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 <" dado_entrada [31:0] $end
+$var wire 1 =" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 >" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[28] $end
+$var parameter 6 ?" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 @" dado_entrada [31:0] $end
+$var wire 1 A" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 B" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[29] $end
+$var parameter 6 C" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 D" dado_entrada [31:0] $end
+$var wire 1 E" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 F" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[30] $end
+$var parameter 6 G" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 H" dado_entrada [31:0] $end
+$var wire 1 I" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 J" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope begin registradores[31] $end
+$var parameter 6 K" idx $end
+$scope module registrador_instanciado $end
+$var wire 1 # clk $end
+$var wire 32 L" dado_entrada [31:0] $end
+$var wire 1 M" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 N" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$scope module x0 $end
+$var wire 1 # clk $end
+$var wire 32 O" dado_entrada [31:0] $end
+$var wire 1 P" habilita_escrita $end
+$var wire 1 ) reset $end
+$var reg 32 Q" dado_saida [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11111 K"
+b11110 G"
+b11101 C"
+b11100 ?"
+b11011 ;"
+b11010 7"
+b11001 3"
+b11000 /"
+b10111 +"
+b10110 '"
+b10101 #"
+b10100 }
+b10011 y
+b10010 u
+b10001 q
+b10000 m
+b1111 i
+b1110 e
+b1101 a
+b1100 ]
+b1011 Y
+b1010 U
+b1001 Q
+b1000 M
+b111 I
+b110 E
+b101 A
+b100 =
+b11 9
+b10 5
+b1 1
+$end
+#0
+$dumpvars
+b0 Q"
+0P"
+b0 O"
+b0 N"
+0M"
+b0 L"
+b0 J"
+0I"
+b0 H"
+b0 F"
+0E"
+b0 D"
+b0 B"
+0A"
+b0 @"
+b0 >"
+0="
+b0 <"
+b0 :"
+09"
+b0 8"
+b0 6"
+05"
+b0 4"
+b0 2"
+01"
+b0 0"
+b0 ."
+0-"
+b0 ,"
+b0 *"
+0)"
+b0 ("
+b0 &"
+0%"
+b0 $"
+b0 ""
+0!"
+b0 ~
+b0 |
+0{
+b0 z
+b0 x
+0w
+b0 v
+b0 t
+0s
+b0 r
+b0 p
+0o
+b0 n
+b0 l
+0k
+b0 j
+b0 h
+0g
+b0 f
+b0 d
+0c
+b0 b
+b0 `
+0_
+b0 ^
+b0 \
+0[
+b0 Z
+b0 X
+0W
+b0 V
+b0 T
+0S
+b0 R
+b0 P
+0O
+b0 N
+b0 L
+0K
+b0 J
+b0 H
+0G
+b0 F
+b0 D
+0C
+b0 B
+b0 @
+0?
+b0 >
+b0 <
+0;
+b0 :
+b0 8
+07
+b0 6
+b0 4
+03
+b0 2
+b0 0
+b0 /
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 *
+1)
+0(
+b0 '
+b0 &
+b0 %
+b0 $
+0#
+b0 "
+b0 !
+$end
+#5000
+1#
+#10000
+0#
+0)
+#15000
+1#
+#20000
+13
+b10 0
+0#
+b10100101101001011010010110100101 $
+b10100101101001011010010110100101 *
+b10100101101001011010010110100101 2
+b10100101101001011010010110100101 6
+b10100101101001011010010110100101 :
+b10100101101001011010010110100101 >
+b10100101101001011010010110100101 B
+b10100101101001011010010110100101 F
+b10100101101001011010010110100101 J
+b10100101101001011010010110100101 N
+b10100101101001011010010110100101 R
+b10100101101001011010010110100101 V
+b10100101101001011010010110100101 Z
+b10100101101001011010010110100101 ^
+b10100101101001011010010110100101 b
+b10100101101001011010010110100101 f
+b10100101101001011010010110100101 j
+b10100101101001011010010110100101 n
+b10100101101001011010010110100101 r
+b10100101101001011010010110100101 v
+b10100101101001011010010110100101 z
+b10100101101001011010010110100101 ~
+b10100101101001011010010110100101 $"
+b10100101101001011010010110100101 ("
+b10100101101001011010010110100101 ,"
+b10100101101001011010010110100101 0"
+b10100101101001011010010110100101 4"
+b10100101101001011010010110100101 8"
+b10100101101001011010010110100101 <"
+b10100101101001011010010110100101 @"
+b10100101101001011010010110100101 D"
+b10100101101001011010010110100101 H"
+b10100101101001011010010110100101 L"
+b1 %
+b1 -
+1(
+#25000
+1#
+#30000
+b10100101101001011010010110100101 4
+03
+b0 0
+0#
+0(
+#35000
+1#
+#40000
+0#
+b10100101101001011010010110100101 "
+b10100101101001011010010110100101 +
+b1 &
+b1 .
+#45000
+1#
+#50000
+17
+b100 0
+0#
+b1011010010110100101101001011010 $
+b1011010010110100101101001011010 *
+b1011010010110100101101001011010 2
+b1011010010110100101101001011010 6
+b1011010010110100101101001011010 :
+b1011010010110100101101001011010 >
+b1011010010110100101101001011010 B
+b1011010010110100101101001011010 F
+b1011010010110100101101001011010 J
+b1011010010110100101101001011010 N
+b1011010010110100101101001011010 R
+b1011010010110100101101001011010 V
+b1011010010110100101101001011010 Z
+b1011010010110100101101001011010 ^
+b1011010010110100101101001011010 b
+b1011010010110100101101001011010 f
+b1011010010110100101101001011010 j
+b1011010010110100101101001011010 n
+b1011010010110100101101001011010 r
+b1011010010110100101101001011010 v
+b1011010010110100101101001011010 z
+b1011010010110100101101001011010 ~
+b1011010010110100101101001011010 $"
+b1011010010110100101101001011010 ("
+b1011010010110100101101001011010 ,"
+b1011010010110100101101001011010 0"
+b1011010010110100101101001011010 4"
+b1011010010110100101101001011010 8"
+b1011010010110100101101001011010 <"
+b1011010010110100101101001011010 @"
+b1011010010110100101101001011010 D"
+b1011010010110100101101001011010 H"
+b1011010010110100101101001011010 L"
+b10 %
+b10 -
+1(
+#55000
+1#
+#60000
+b1011010010110100101101001011010 8
+07
+b0 0
+0#
+0(
+#65000
+1#
+#70000
+0#
+b1011010010110100101101001011010 !
+b1011010010110100101101001011010 ,
+b10 '
+b10 /
+#75000
+1#
+#80000
+0#
+b0 "
+b0 +
+b0 &
+b0 .
+#85000
+1#
+#90000
+0#
+#95000
+1#
+#100000
+0#
+#105000
+1#
+#110000
+0#
+#115000
+1#
+#120000
+0#
+#125000
+1#
+#130000
+0#
