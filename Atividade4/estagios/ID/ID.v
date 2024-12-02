@@ -14,7 +14,8 @@ module decode (
   output [4:0] rs1_out, rs2_out, rd_out,
   output [31:0] imediato_out, pc_branch_value,
   output mux_sel_IF,
-  output IF_flush
+  output IF_flush,
+  output stall_pipeline_debug
 
 
 );
@@ -111,7 +112,7 @@ module decode (
   assign branch_taken_flag_interno = (instruction[6:0] == SBTYPE) && (ra_saida_interno == rb_saida_interno);
   assign mux_sel_IF = branch_taken_flag_interno;
   assign IF_flush = branch_taken_flag_interno;
-
+  assign stall_pipeline_debug = stall_pipeline_interno;
 
 
 endmodule
