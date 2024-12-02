@@ -1,3 +1,10 @@
+`include"estagios/ID/controle.v"
+`include"estagios/ID/Hazard.v"
+`include"estagios/ID/ImmGen.v"
+`include"estagios/ID/register_file.v"
+`include"estagios/ID/registrador.v"
+`include"registradores_estagios/id_ex_register.v"
+
 module decode (
   input clock,
   input reset,
@@ -16,7 +23,7 @@ module decode (
   output [31:0] reg_a_out,
   output [31:0] reg_b_out,
   output [6:0]  funct7_out,
-  output [2:0]  funct3_out
+  output [2:0]  funct3_out,
   output mux_sel_IF,
   output IF_flush
 
@@ -96,8 +103,8 @@ module decode (
     .imediato_in(imediato_interno),
     .reg_a_in(ra_saida_interno),
     .reg_b_in(rb_saida_interno),
-    .funct7_in(instrucao_interno),
-    .funct3_in(funct3_out)
+    .funct7_in(instruction[31:25]),
+    .funct3_in(instruction[14:12]),
 
     .mem_to_reg_out(mem_to_reg_out),
     .reg_write_out(reg_write_out),
@@ -112,8 +119,8 @@ module decode (
     .imediato_out(imediato_out),
     .reg_a_out(reg_a_out),
     .reg_b_out(reg_b_out),
-    .funct7_out(instruction[31:25]),
-    .funct3_out(instruction[14:12])
+    .funct7_out(funct7_out),
+    .funct3_out(funct3_out)
   );
 
   assign ra_interno = instruction[19:15];

@@ -1,3 +1,6 @@
+`include"estagios/MEM/data_memory.v"
+`include"estagios/MEM/mem_wb_register.v"
+
 module MEM(
     input       clock,
     input       reset,
