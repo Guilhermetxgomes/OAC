@@ -6,7 +6,6 @@ module hazard_unit(
     input [4:0] src2,
     input [4:0] dest_ex_mem,
     input [4:0] dest_mem_wb,
-    input branch_ctrl_flag,
     input branch_taken_flag,
     output reg pc_enable,
     output reg if_id_enable,
