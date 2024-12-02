@@ -45,7 +45,6 @@ module id_ex_register (
             beq_instruction_out <= beq_instruction_in;
             aluSrc_out          <= aluSrc_in;
             aluOp_out           <= aluOp_in;
-
             rs1_out             <= rs1_in;
             rs2_out             <= rs2_in;
             rd_out              <= rd_in;
