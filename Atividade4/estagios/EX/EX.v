@@ -35,6 +35,8 @@ module EX (
     output      mem_read_out,
     output      mem_write_out,
     output      beq_instruction_out,
+    // Saída sinal de controle para ID
+    output [4:0] rd_ex,,
     // Saídas do banco de registradores EX/MEM
     output [31:0] alu_result_out,
     output [31:0] mux2_result_out,
@@ -51,6 +53,8 @@ wire [31:0] alu_result;
 wire        flag_beq;
 wire [1:0]  forwardA;
 wire [1:0]  forwardB;
+
+assign rd_ex = reg_rd_in,
 
 mux_3_values #(
    .WIDTH(32)
