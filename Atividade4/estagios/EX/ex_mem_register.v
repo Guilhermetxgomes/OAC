@@ -36,7 +36,7 @@ reg [31:0] mux2_result_value;
 reg [4:0] reg_rd_value;
 reg      flag_beq_value;
 
-    always @(negedge clock) begin
+    always @(posedge clock) begin
         if(reset) begin
             mem_to_reg_value <= 1'b0;
             reg_write_value <= 1'b0;

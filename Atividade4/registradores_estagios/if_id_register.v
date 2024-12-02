@@ -12,7 +12,7 @@ module if_id_register (
   reg [31:0] pc_value;
   reg [31:0] im_value;
 
-  always @(negedge clock) begin
+  always @(posedge clock) begin
     if (reset || if_flush) begin
       pc_value <= 32'b0;
       im_value <= 32'b0;

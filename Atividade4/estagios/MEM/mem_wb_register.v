@@ -24,7 +24,7 @@ reg [31:0] read_data_value;
 reg [31:0] alu_result_value;
 reg [4:0] reg_rd_value;
 
-    always @(negedge clock) begin
+    always @(posedge clock) begin
         if(reset) begin
             mem_to_reg_value <= 1'b0;
             reg_write_value <= 32'd0;

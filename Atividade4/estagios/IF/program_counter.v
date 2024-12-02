@@ -7,7 +7,7 @@ module program_counter(
 );
 
 reg [31:0] pc_value;
-    always @(negedge clock) begin
+    always @(posedge clock) begin
         if(reset) begin
             pc_value <= 32'b0;
         end else if(load) begin
