@@ -12,13 +12,14 @@ module decode (
   output mem_write_out, beq_instruction_out, aluSrc_out,
   output [1:0] aluOp_out,
   output [4:0] rs1_out, rs2_out, rd_out,
-  output [31:0] imediato_out, pc_branch_value
+  output [31:0] imediato_out, pc_branch_value,
+  output mux_sel_IF
 
 
 );
   wire [31:0] imediato_interno;
   wire [4:0] ra_interno, rb_interno, rd_interno;
-  wire [31:0] ra_saida_interno, rb_saida_intenrno;
+  wire [31:0] ra_saida_interno, rb_saida_interno;
   wire branch_taken_flag_interno, stall_pipeline_interno;
   wire mem_to_reg_interno,reg_write_interno,mem_read_interno, mem_write_interno, beq_instruction_interno, aluSrc_interno;
   wire [1:0] aluOp_interno;
@@ -43,7 +44,7 @@ module decode (
     .dado_escrita(Din),
     .reset(reset),
     .dado_fonte1(ra_saida_interno),
-    .dado_fonte2(rb_saida_intenrno)
+    .dado_fonte2(rb_saida_interno)
   );
 
   hazard_unit hazard_detection_unit(
@@ -106,6 +107,8 @@ module decode (
   assign rb_interno = instruction[24:20];
   assign rd_interno = instruction[11:7];
   assign pc_branch_value = pc + imediato_interno;
+  assign branch_taken_flag_interno = (instruction[6:0] == SBTYPE) && (ra_saida_interno == rb_saida_interno);
+  assign mux_sel_IF = branch_taken_flag_interno;
 
 
 endmodule

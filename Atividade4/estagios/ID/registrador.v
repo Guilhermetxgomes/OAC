@@ -6,8 +6,8 @@ module registrador(
     output  reg [31:0] dado_saida     // Dado armazenado no registrador
 );
 
-    // Comportamento síncrono na borda negativa do clock
-    always @(negedge clk) begin
+    // Comportamento síncrono na borda positiva do clock
+    always @(posedge clk) begin
         if (reset) begin
             dado_saida <= 32'b0; // Resetar registrador para 0
         end else if (habilita_escrita) begin
