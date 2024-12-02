@@ -117,7 +117,7 @@ v00000201d60ee5a0_0 .net "reg_write_in", 0 0, v00000201d616e1b0_0;  alias, 1 dri
 v00000201d60ee6e0_0 .net "reg_write_out", 0 0, L_00000201d616d7b0;  alias, 1 drivers
 v00000201d60edf60_0 .var "reg_write_value", 31 0;
 v00000201d60ee000_0 .net "reset", 0 0, v00000201d616d670_0;  alias, 1 drivers
-E_00000201d60f0520 .event negedge, v00000201d60ee640_0;
+E_00000201d60f0520 .event posedge, v00000201d60ee640_0;
 L_00000201d616d7b0 .part v00000201d60edf60_0, 0, 1;
 S_00000201d60fce90 .scope module, "memoria_dados" "data_memory" 3 34, 5 1 0, S_00000201d610a490;
  .timescale -9 -12;

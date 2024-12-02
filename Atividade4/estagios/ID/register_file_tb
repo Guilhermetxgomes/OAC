@@ -139,7 +139,7 @@ v0x6000035f5c20_0 .net "dado_entrada", 31 0, v0x6000035fc240_0;  alias, 1 driver
 v0x6000035f5cb0_0 .var "dado_saida", 31 0;
 v0x6000035f5d40_0 .net "habilita_escrita", 0 0, L_0x6000036f5400;  1 drivers
 v0x6000035f5dd0_0 .net "reset", 0 0, v0x6000035fc630_0;  alias, 1 drivers
-E_0x6000012f8780 .event negedge, v0x6000035f5b90_0;
+E_0x6000012f8780 .event posedge, v0x6000035f5b90_0;
 S_0x122704a20 .scope generate, "registradores[2]" "registradores[2]" 3 33, 3 33 0, S_0x122704e30;
  .timescale -9 -12;
 P_0x6000012f8800 .param/l "idx" 1 3 33, +C4<010>;
