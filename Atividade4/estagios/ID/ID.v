@@ -13,10 +13,12 @@ module decode (
   output [1:0] aluOp_out,
   output [4:0] rs1_out, rs2_out, rd_out,
   output [31:0] imediato_out, pc_branch_value,
-  output mux_sel_IF
-
-
+  output [31:0] reg_a_out,
+  output [31:0] reg_b_out,
+  output [6:0]  funct7_out,
+  output [2:0]  funct3_out
 );
+
   wire [31:0] imediato_interno;
   wire [4:0] ra_interno, rb_interno, rd_interno;
   wire [31:0] ra_saida_interno, rb_saida_interno;
@@ -88,6 +90,11 @@ module decode (
     .rs2_in(rb_interno),
     .rd_in(rd_interno),
     .imediato_in(imediato_interno),
+    .reg_a_in(ra_saida_interno),
+    .reg_b_in(rb_saida_interno),
+    .funct7_in(instrucao_interno),
+    .funct3_in(funct3_out)
+
     .mem_to_reg_out(mem_to_reg_out),
     .reg_write_out(reg_write_out),
     .mem_read_out(mem_read_out),
@@ -98,10 +105,12 @@ module decode (
     .rs1_out(rs1_out),
     .rs2_out(rs2_out),
     .rd_out(rd_out),
-    .imediato_out(imediato_out)
+    .imediato_out(imediato_out),
+    .reg_a_out(reg_a_out),
+    .reg_b_out(reg_b_out),
+    .funct7_out(instruction[31:25]),
+    .funct3_out(instruction[14:12])
   );
-
-
 
   assign ra_interno = instruction[19:15];
   assign rb_interno = instruction[24:20];

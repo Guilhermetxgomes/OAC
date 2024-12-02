@@ -10,6 +10,10 @@ module id_ex_register (
     input       [1:0]   aluOp_in,
     input       [4:0]   rs1_in, rs2_in, rd_in,  // Registradores
     input       [31:0]  imediato_in,// Imediato
+    input       [31:0]  reg_a_in,
+    input       [31:0]  reg_b_in,
+    input       [6:0]   funct7_in,
+    input       [2:0]   funct3_in,
 
     output reg          mem_to_reg_out,
     output reg          reg_write_out,
@@ -19,7 +23,11 @@ module id_ex_register (
     output reg          aluSrc_out,
     output reg  [1:0]   aluOp_out,
     output reg  [4:0]   rs1_out, rs2_out, rd_out,
-    output reg  [31:0]  imediato_out
+    output reg  [31:0]  imediato_out,
+    output reg  [31:0]  reg_a_out,
+    output reg  [31:0]  reg_b_out,
+    output reg  [6:0]   funct7_out,
+    output reg  [2:0]   funct3_out
 );
 
     // Bloco síncrono
@@ -37,6 +45,10 @@ module id_ex_register (
             rs2_out             <= 5'b0;
             rd_out              <= 5'b0;
             imediato_out        <= 32'b0;
+            reg_a_out           <= 32'b0;
+            reg_b_out           <= 32'b0;
+            funct7_out          <= 7'b0;
+            funct3_out          <= 3'b0;
         end else begin
             mem_to_reg_out      <= mem_to_reg_in;
             reg_write_out       <= reg_write_in;
@@ -49,6 +61,10 @@ module id_ex_register (
             rs2_out             <= rs2_in;
             rd_out              <= rd_in;
             imediato_out        <= imediato_in;
+            reg_a_out           <= reg_a_out;
+            reg_b_out           <= reg_b_out;
+            funct7_out          <= funct7_out;
+            funct3_out          <= funct3_out;
         end
     end
 
