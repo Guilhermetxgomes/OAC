@@ -17,6 +17,10 @@ module decode (
   output [31:0] reg_b_out,
   output [6:0]  funct7_out,
   output [2:0]  funct3_out
+  output mux_sel_IF,
+  output IF_flush
+
+
 );
 
   wire [31:0] imediato_interno;
@@ -118,6 +122,8 @@ module decode (
   assign pc_branch_value = pc + imediato_interno;
   assign branch_taken_flag_interno = (instruction[6:0] == SBTYPE) && (ra_saida_interno == rb_saida_interno);
   assign mux_sel_IF = branch_taken_flag_interno;
+  assign IF_flush = branch_taken_flag_interno;
+
 
 
 endmodule

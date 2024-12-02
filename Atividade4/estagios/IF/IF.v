@@ -5,6 +5,7 @@ module fetch (
   input mux_sel,
   input load_pc,
   input load_if_id_register,
+  input if_flush,
   output [31:0] pc_out,
   output [31:0] instrucao
 );
@@ -38,6 +39,7 @@ module fetch (
     .clock(clock),
     .reset(reset),
     .load(load_if_id_register),
+    .if_flush(if_flush),
     .pc_in(pc_in_interno),
     .instruction_memory_in(instrucao_interno),
     .pc_out(pc_out),
