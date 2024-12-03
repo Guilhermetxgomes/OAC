@@ -3,7 +3,7 @@
 `include"estagios/ID/ImmGen.v"
 `include"estagios/ID/register_file.v"
 `include"estagios/ID/registrador.v"
-`include"registradores_estagios/id_ex_register.v"
+`include"estagios/ID/id_ex_register.v"
 
 module decode (
   input clock,
