@@ -1,3 +1,7 @@
+`include"estagios/IF/instruction_memory.v"
+`include"estagios/IF/program_counter.v"
+`include"registradores_estagios/if_id_register.v"
+
 module fetch (
   input clock,
   input reset,

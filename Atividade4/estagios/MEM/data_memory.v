@@ -14,8 +14,8 @@ module data_memory(
 		for (i = 0; i < 31; i = i + 1) begin //zerando posições de memória
 			memory [i] = 32'd0;
 		end
-		memory[5] = 32'd8;
-	    memory[6] = 32'd1; //definindo previamente uma posição de memória com valor para fins de teste
+		memory[0] = 32'd8;
+	    memory[4] = 32'd1; //definindo previamente uma posição de memória com valor para fins de teste
 	end
 
     always @ (posedge clk) begin

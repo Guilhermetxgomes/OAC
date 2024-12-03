@@ -1,3 +1,10 @@
+`include"estagios/EX/alu.v"
+`include"estagios/EX/alu_control.v"
+`include"estagios/EX/ex_mem_register.v"
+`include"estagios/EX/forwading_unit.v"
+`include"estagios/EX/mux_2_values.v"
+`include"estagios/EX/mux_3_values.v"
+
 module EX (
     input       clock,
     input       reset,
@@ -35,6 +42,8 @@ module EX (
     output      mem_read_out,
     output      mem_write_out,
     output      beq_instruction_out,
+    // Saída sinal de controle para ID
+    output [4:0] rd_ex,
     // Saídas do banco de registradores EX/MEM
     output [31:0] alu_result_out,
     output [31:0] mux2_result_out,
@@ -51,6 +60,8 @@ wire [31:0] alu_result;
 wire        flag_beq;
 wire [1:0]  forwardA;
 wire [1:0]  forwardB;
+
+assign rd_ex = reg_rd_in;
 
 mux_3_values #(
    .WIDTH(32)

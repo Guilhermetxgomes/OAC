@@ -41,6 +41,8 @@ module register_file(
         end
     endgenerate
 
+    assign saidas[32'd3] = 32'd1;
+    assign saidas[32'd2] = 32'd5;
     // Leitura dos registradores fonte
     assign dado_fonte1 = saidas[endereco_fonte1];
     assign dado_fonte2 = saidas[endereco_fonte2];

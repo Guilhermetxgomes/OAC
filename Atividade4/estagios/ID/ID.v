@@ -1,3 +1,10 @@
+`include"estagios/ID/controle.v"
+`include"estagios/ID/Hazard.v"
+`include"estagios/ID/ImmGen.v"
+`include"estagios/ID/register_file.v"
+`include"estagios/ID/registrador.v"
+`include"estagios/ID/id_ex_register.v"
+
 module decode (
   input clock,
   input reset,
@@ -13,12 +20,17 @@ module decode (
   output [1:0] aluOp_out,
   output [4:0] rs1_out, rs2_out, rd_out,
   output [31:0] imediato_out, pc_branch_value,
+  output [31:0] reg_a_out,
+  output [31:0] reg_b_out,
+  output [6:0]  funct7_out,
+  output [2:0]  funct3_out,
   output mux_sel_IF,
   output IF_flush,
   output stall_pipeline_debug
 
 
 );
+
   wire [31:0] imediato_interno;
   wire [4:0] ra_interno, rb_interno, rd_interno;
   wire [31:0] ra_saida_interno, rb_saida_interno;
@@ -90,6 +102,11 @@ module decode (
     .rs2_in(rb_interno),
     .rd_in(rd_interno),
     .imediato_in(imediato_interno),
+    .reg_a_in(ra_saida_interno),
+    .reg_b_in(rb_saida_interno),
+    .funct7_in(instruction[31:25]),
+    .funct3_in(instruction[14:12]),
+
     .mem_to_reg_out(mem_to_reg_out),
     .reg_write_out(reg_write_out),
     .mem_read_out(mem_read_out),
@@ -100,10 +117,12 @@ module decode (
     .rs1_out(rs1_out),
     .rs2_out(rs2_out),
     .rd_out(rd_out),
-    .imediato_out(imediato_out)
+    .imediato_out(imediato_out),
+    .reg_a_out(reg_a_out),
+    .reg_b_out(reg_b_out),
+    .funct7_out(funct7_out),
+    .funct3_out(funct3_out)
   );
-
-
 
   assign ra_interno = instruction[19:15];
   assign rb_interno = instruction[24:20];
