@@ -35,7 +35,7 @@ module riscv_pipeline_tb;
         #50; // Aguarda 50 ns para verificar o comportamento com o pipeline desligado
 
         // Teste 2: Pipeline ligado
-        #60;
+        #500;
 
         // // Teste 3: Pipeline ligado após reset
         // reset = 1;
