@@ -1,7 +1,6 @@
 module riscv_pipeline(
     input clock,
-    input reset,
-    input ligar
+    input reset
 );
 
 // Sinais internos IF->ID
@@ -68,8 +67,6 @@ wire        forward_mem_wb_reg_write;
 
 // Sinais internos WB->ID
 wire [31:0] s_alu_data_mem_wb;
-
-assign s_pc_branch_value_IF = (ligar) ? 32'b0 : s_pc_branch_value;
 
 fetch IF_stage(
     .clock(clock),

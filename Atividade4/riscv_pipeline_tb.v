@@ -10,8 +10,7 @@ module riscv_pipeline_tb;
     // Instância do módulo riscv_pipeline
     riscv_pipeline DUT (
         .clock(clock),
-        .reset(reset),
-        .ligar(ligar)
+        .reset(reset)
     );
 
     // Geração do clock (50 MHz => período de 20 ns)
@@ -27,20 +26,15 @@ module riscv_pipeline_tb;
         // Inicialização
         clock = 0;
         reset = 1;
-        ligar = 0;
 
         // Reset do sistema
         #25;
         reset = 0;
 
         // Teste 1: Pipeline desligado
-        ligar = 0;
         #50; // Aguarda 50 ns para verificar o comportamento com o pipeline desligado
 
         // Teste 2: Pipeline ligado
-        ligar = 1;
-        #20;
-        ligar=0;
         #60;
 
         // // Teste 3: Pipeline ligado após reset
@@ -56,8 +50,8 @@ module riscv_pipeline_tb;
 
     // Monitoramento dos sinais principais para depuração
     initial begin
-        $monitor("Time=%0dns | reset=%b | ligar=%b | clock=%b",
-                 $time, reset, ligar, clock);
+        $monitor("Time=%0dns | reset=%b | clock=%b",
+                 $time, reset, clock);
     end
 
 endmodule

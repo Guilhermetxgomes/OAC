@@ -14,7 +14,8 @@ module fetch (
   output [31:0] instrucao
 );
 
-  wire [31:0] pc_in_interno, pc_out_interno, instrucao_interno;
+  wire [31:0] pc_in_interno = 32'b0;
+  wire [31:0] pc_out_interno, instrucao_interno;
 
   mux_2_values #(
     .WIDTH(32)
