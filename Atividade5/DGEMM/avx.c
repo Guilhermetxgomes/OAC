@@ -1,24 +1,28 @@
+#include <x86intrin.h>
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 void dgemm (int n, double* A, double* B, double* C) {
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < n; ++j) {
-            double cij = C[i+j*n];
-            for (int k = 0; k < n; k++)
-                cij += A[i+k*n] * B[k+j*n];
-            C[i+j*n] = cij;
+    for ( int i = 0; i < n; i+=4 )
+        for ( int j = 0; j < n; j++ ) {
+            __m256d c0 = _mm256_load_pd(C+i+j*n);
+            for( int k = 0; k < n; k++ )
+                c0 = _mm256_add_pd(c0,
+                    _mm256_mul_pd(_mm256_load_pd(A+i+k*n),
+                                  _mm256_broadcast_sd(B+k+j*n)));
+            _mm256_store_pd(C+i+j*n, c0);
         }
 }
 
 void run_test(int n) {
     printf("\nExecutando DGEMM para matriz %dx%d...\n", n, n);
 
-    double* A = (double*)malloc(n * n * sizeof(double));
-    double* B = (double*)malloc(n * n * sizeof(double));
-    double* C = (double*)malloc(n * n * sizeof(double));
+    double* A = (double*)aligned_alloc(32, n * n * sizeof(double));
+    double* B = (double*)aligned_alloc(32, n * n * sizeof(double));
+    double* C = (double*)aligned_alloc(32, n * n * sizeof(double));
 
+    // Inicializa matrizes
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             A[i + j * n] = i + j + 1;

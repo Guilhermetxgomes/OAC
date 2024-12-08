@@ -1,28 +1,29 @@
+#include <x86intrin.h>
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#define BLOCKSIZE 32
+#define UNROLL (4)
 
-void do_block (int n, int si, int sj, int sk, double *A, double *B, double *C) {
-    for (int i = si; i < si+BLOCKSIZE; ++i)
-        for (int j = sj; j < sj+BLOCKSIZE; ++j) {
-            double cij = C[i+j*n];
-            for (int k = sk; k < sk+BLOCKSIZE; k++)
-                cij += A[i+k*n] * B[k+j*n];
-            C[i+j*n] = cij;
+void dgemm (int n, double* A, double* B, double* C) {
+    for ( int i = 0; i < n; i+=UNROLL*4 )
+        for ( int j = 0; j < n; j++ ) {
+            __m256d c[4];
+            for ( int x = 0; x < UNROLL; x++ )
+                c[x] = _mm256_load_pd(C+i+x*4+j*n);
+            for( int k = 0; k < n; k++ ) {
+                __m256d b = _mm256_broadcast_sd(B+k+j*n);
+                for (int x = 0; x < UNROLL; x++)
+                    c[x] = _mm256_add_pd(c[x],
+                        _mm256_mul_pd(_mm256_load_pd(A+n*k+x*4+i), b));
+            }
+            for ( int x = 0; x < UNROLL; x++ )
+                _mm256_store_pd(C+i+x*4+j*n, c[x]);
         }
 }
 
-void dgemm (int n, double* A, double* B, double* C) {
-    for (int sj = 0; sj < n; sj += BLOCKSIZE)
-        for (int si = 0; si < n; si += BLOCKSIZE)
-            for (int sk = 0; sk < n; sk += BLOCKSIZE)
-                do_block(n, si, sj, sk, A, B, C);
-}
-
 void run_test(int n) {
-    printf("\nExecutando DGEMM para matriz %dx%d (Cache Blocking)...\n", n, n);
+    printf("\nExecutando DGEMM para matriz %dx%d (AVX + Loop Unrolling)...\n", n, n);
 
     double* A = (double*)aligned_alloc(32, n * n * sizeof(double));
     double* B = (double*)aligned_alloc(32, n * n * sizeof(double));
