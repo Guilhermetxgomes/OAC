@@ -45,7 +45,7 @@ void run_test(int n) {
 }
 
 int main() {
-    int dimensions[] = {32, 160, 480, 960};
+    int dimensions[] = {32, 64, 160, 320, 480, 960, 4096};
     int num_tests = sizeof(dimensions) / sizeof(dimensions[0]);
 
     for (int i = 0; i < num_tests; ++i) {
