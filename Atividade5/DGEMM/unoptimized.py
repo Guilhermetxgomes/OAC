@@ -18,10 +18,12 @@ def run_test(n):
     end = time.time()
 
     time_spent = end - start
+    gflops = 2 * n ** 3 / time_spent / 1e9
     print(f"Tempo de execução para matriz {n}x{n}: {time_spent:.6f} segundos")
+    print(f"GFLOPS: {gflops:.6f}")
 
 def main():
-    dimensions = [32, 64, 160, 320, 480, 960, 4096]
+    dimensions = [32, 64, 320, 960]
     for dim in dimensions:
         run_test(dim)
 

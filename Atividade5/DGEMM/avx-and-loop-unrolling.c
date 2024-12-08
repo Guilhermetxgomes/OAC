@@ -42,7 +42,10 @@ void run_test(int n) {
     clock_t end = clock();
 
     double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
+    double gflops = 2.0 * n * n * n / time_spent / 1e9;
+
     printf("Tempo de execução para matriz %dx%d: %.6f segundos\n", n, n, time_spent);
+    printf("GFLOPS para matriz %dx%d: %.6f gflops\n", n, n, gflops);
 
     free(A);
     free(B);
