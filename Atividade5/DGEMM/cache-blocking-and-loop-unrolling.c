@@ -33,9 +33,9 @@ void dgemm (int n, double* A, double* B, double* C) {
 void run_test(int n) {
     printf("\nExecutando DGEMM para matriz %dx%d (Cache Blocking + Loop Unrolling)...\n", n, n);
 
-    double* A = (double*)aligned_alloc(32, n * n * sizeof(double));
-    double* B = (double*)aligned_alloc(32, n * n * sizeof(double));
-    double* C = (double*)aligned_alloc(32, n * n * sizeof(double));
+    double* A = (double*)_aligned_malloc(n * n * sizeof(double), 32);
+    double* B = (double*)_aligned_malloc(n * n * sizeof(double), 32);
+    double* C = (double*)_aligned_malloc(n * n * sizeof(double), 32);
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
@@ -52,16 +52,27 @@ void run_test(int n) {
     double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
     double gflops = 2.0 * n * n * n / time_spent / 1e9;
 
-    printf("Tempo de execução para matriz %dx%d: %.6f segundos\n", n, n, time_spent);
-    printf("GFLOPS para matriz %dx%d: %.6f gflops\n", n, n, gflops);
+        // Abrir o arquivo para escrita
+    FILE* file = fopen("programa5_resultados5.txt", "a"); // "a" para adicionar no final do arquivo
+    if (file == NULL) {
+        perror("Erro ao abrir o arquivo");
+        exit(EXIT_FAILURE);
+    }
 
-    free(A);
-    free(B);
-    free(C);
+    // Escrever no arquivo
+    fprintf(file, "Tempo de execução para matriz %dx%d: %.6f segundos\n", n, n, time_spent);
+    fprintf(file, "GFLOPS para matriz %dx%d: %.6f gflops\n", n, n, gflops);
+
+    // Fechar o arquivo
+    fclose(file);
+
+    _aligned_free(A);
+    _aligned_free(B);
+    _aligned_free(C);
 }
 
 int main() {
-    int dimensions[] = {32, 64, 160, 320, 480, 960, 4096};
+    int dimensions[] = {64, 320, 480, 960};
     int num_tests = sizeof(dimensions) / sizeof(dimensions[0]);
 
     for (int i = 0; i < num_tests; ++i) {

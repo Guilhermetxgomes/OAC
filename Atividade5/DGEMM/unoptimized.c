@@ -34,8 +34,20 @@ void run_test(int n) {
     double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
     double gflops = 2.0 * n * n * n / time_spent / 1e9;
 
-    printf("Tempo de execução para matriz %dx%d: %.6f segundos\n", n, n, time_spent);
-    printf("GFLOPS para matriz %dx%d: %.6f gflops\n", n, n, gflops);
+        // Abrir o arquivo para escrita
+    FILE* file = fopen("programa2_resultados5.txt", "a"); // "a" para adicionar no final do arquivo
+    if (file == NULL) {
+        perror("Erro ao abrir o arquivo");
+        exit(EXIT_FAILURE);
+    }
+
+    // Escrever no arquivo
+    fprintf(file, "Tempo de execução para matriz %dx%d: %.6f segundos\n", n, n, time_spent);
+    fprintf(file, "GFLOPS para matriz %dx%d: %.6f gflops\n", n, n, gflops);
+
+    // Fechar o arquivo
+    fclose(file);
+
 
     free(A);
     free(B);
@@ -43,8 +55,9 @@ void run_test(int n) {
 }
 
 int main() {
-    int dimensions[] = {32, 64, 160, 320, 480, 960, 4096};
+    int dimensions[] = {64, 320, 480, 960};
     int num_tests = sizeof(dimensions) / sizeof(dimensions[0]);
+    
 
     for (int i = 0; i < num_tests; ++i) {
         run_test(dimensions[i]);

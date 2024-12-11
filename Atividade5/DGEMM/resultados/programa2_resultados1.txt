@@ -1,0 +1,8 @@
+Tempo de execução para matriz 64x64: 0.000000 segundos
+GFLOPS para matriz 64x64: 1.#INF00 gflops
+Tempo de execução para matriz 320x320: 0.051000 segundos
+GFLOPS para matriz 320x320: 1.285020 gflops
+Tempo de execução para matriz 480x480: 0.122000 segundos
+GFLOPS para matriz 480x480: 1.812984 gflops
+Tempo de execução para matriz 960x960: 1.166000 segundos
+GFLOPS para matriz 960x960: 1.517557 gflops
